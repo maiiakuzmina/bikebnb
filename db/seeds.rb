@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
 User.destroy_all
 Bike.destroy_all
 puts "Creating users..."
@@ -22,15 +23,24 @@ puts "Users created!"
 
 puts "Creating bikes..."
 
-Bike.create!(name: "ebike", price: 5, description: "good condition", user: User.all.sample)
-Bike.create!(name: "gazelle", price: 6, description: "brand new" , user: User.all.sample)
-Bike.create!(name: "Lekker", price: 3, description: "Lekkere fiets", user: User.all.sample)
-Bike.create!(name: "marrinse", price: 4, description: "mountain bikes", user: User.all.sample)
-Bike.create!(name: "ebike second hand" , price: 3 , description: "cool vintage", user: User.all.sample)
-Bike.create!(name: "Canyon", price: 7, description: "snelle fiets", user: User.all.sample)
-Bike.create!(name: "Elops", price: 5, description: "for perfect riding", user: User.all.sample)
-Bike.create!(name: "Scooter", price: 8, description: "super fast", user: User.all.sample)
-Bike.create!(name: "gazelle 124", price: 5 , description: "very handy", user: User.all.sample)
-Bike.create!(name: "Giant", price: 6, description: "is niet gestolen", user: User.all.sample)
+bike_1 = { name: "ebike", price: 5, description: "good condition", user: User.all.sample }
+bike_2 = { name: "gazelle", price: 6, description: "brand new" , user: User.all.sample }
+bike_3 = { name: "Lekker", price: 3, description: "Lekkere fiets", user: User.all.sample }
+bike_4 = { name: "marrinse", price: 4, description: "mountain bikes", user: User.all.sample }
+bike_5 = {name: "ebike second hand" , price: 3 , description: "cool vintage", user: User.all.sample }
+bike_6 = { name: "Canyon", price: 7, description: "snelle fiets", user: User.all.sample }
+bike_7 = { name: "Elops", price: 5, description: "for perfect riding", user: User.all.sample }
+bike_8 = { name: "Scooter", price: 8, description: "super fast", user: User.all.sample }
+bike_9 = { name: "gazelle 124", price: 5 , description: "very handy", user: User.all.sample }
+bike_10 = { name: "Giant", price: 6, description: "is niet gestolen", user: User.all.sample }
+
+
+[bike_1, bike_2, bike_3, bike_4, bike_5, bike_6, bike_7, bike_8, bike_9, bike_10].each do |attributes|
+  bike = Bike.new(attributes)
+  file = URI.open("https://source.unsplash.com/random/?bike")
+  bike.photo.attach(io: file, filename: "#{bike.name}.png", content_type: "image/png")
+  bike.save
+end
 
 puts "Bikes are created..."
+
