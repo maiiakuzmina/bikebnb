@@ -1,2 +1,7 @@
 <h1>This is our index page</h1>
 <p>Here is some text</p>
+<ul>
+  <% @bikes.each do |bike| %>
+    <li><%= bike.name %></li>
+  <% end %>
+</ul>

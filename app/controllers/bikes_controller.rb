@@ -1,5 +1,7 @@
 class BikesController < ApplicationController
   def index
+    @bikes = Bike.all
+    @bike = Bike.new
   end
 
   def show

@@ -43,4 +43,3 @@ bike_10 = { name: "Giant", price: 6, description: "is niet gestolen", user: User
 end
 
 puts "Bikes are created..."
-
