@@ -17,4 +17,3 @@ User.create!(name: "Francesca", email: "francesca@gmail.com", password: "123456"
 User.create!(name: "Sema", email: "sema@gmail.com", password: "123456")
 
 puts "Users created!"
-
