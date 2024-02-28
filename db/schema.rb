@@ -40,9 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_120829) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-ActiveRecord::Schema[7.1].define(version: 2024_02_27_111851) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  end
 
   create_table "bikes", force: :cascade do |t|
     t.string "name"
@@ -66,10 +64,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_111851) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-=======
   add_foreign_key "bikes", "users"
->>>>>>> master
 end
