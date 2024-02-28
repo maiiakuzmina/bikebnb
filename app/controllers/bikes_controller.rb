@@ -26,6 +26,11 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     @bike.destroy
     redirect_to bikes_path
+
+  end
+  
+  def edit
+    @bike = Bike.find
   end
 
   private
