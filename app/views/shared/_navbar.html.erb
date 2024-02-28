@@ -1,11 +1,34 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="fa-solid fa-bicycle"></i> BikeBnb
-    </a>
-    <div class="avatar-container">
-    <i class="fa-solid fa-user"></i>
+    <%= link_to root_path, class: 'nav-link active' do %>
+      <i class="fa-solid fa-bicycle"></i>
+      BikeBnb
+    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to 'HOME(we can change it)', root_path, class: 'nav-link active' %>
+        </li>
+        <!-- Diğer navbar öğeleri buraya eklenebilir -->
+      </ul>
+      <div class="d-flex">
+
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" , class: 'btn btn-outline-primary me-2' do %>
+            Log Out
+          <% end %>
+          <%= link_to 'New Bike', new_bike_path, class: 'btn btn-primary' %>
+        <% else %>
+          <%= link_to new_user_session_path, class: 'btn btn-outline-primary me-2' do %>
+            Sign In
+          <% end %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </nav>
-
