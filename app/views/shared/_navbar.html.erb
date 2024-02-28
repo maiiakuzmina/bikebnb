@@ -11,17 +11,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <%= link_to 'HOME(we can change it)', root_path, class: 'nav-link active' %>
+          <%= link_to 'HOME', root_path, class: 'nav-link active' %>
         </li>
         <!-- Diğer navbar öğeleri buraya eklenebilir -->
       </ul>
       <div class="d-flex">
 
         <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" , class: 'btn btn-outline-primary me-2' do %>
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "btn-logout" do %>
             Log Out
           <% end %>
-          <%= link_to 'New Bike', new_bike_path, class: 'btn btn-primary' %>
+          <%= link_to 'New Bike', new_bike_path, class: 'btn-new-bike' %>
         <% else %>
           <%= link_to new_user_session_path, class: 'btn btn-outline-primary me-2' do %>
             Sign In
