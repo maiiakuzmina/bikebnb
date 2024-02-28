@@ -8,6 +8,7 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
   end
 
+
   private
 
   def bike_params

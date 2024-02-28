@@ -1,7 +1,31 @@
 <h1>This is our index page</h1>
 <p>Here is some text</p>
-<ul>
-  <% @bikes.each do |bike| %>
-    <li><%= bike.name %></li>
-  <% end %>
-</ul>
+<div class="container">
+
+    <% @bikes.each do |bike| %>
+
+      <div class="card">
+        <div class="row">
+          <div class="col-sm">
+            <% if @bike.photo.attached? %>
+              <%= cl_image_tag @bike.photo.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <p>No image available</p>
+            <% end %>
+
+            <%= link_to bike.name, bikes_path(bike), class%>
+            <div class="card-body">
+
+
+            <p><%= bike.description %></p>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+#TODO
+#create card to each bike
+#create a link to bikes_bike_path
