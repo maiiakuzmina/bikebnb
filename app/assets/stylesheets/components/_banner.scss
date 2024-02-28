@@ -1,0 +1,23 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 300px 100px;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 100px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.banner h3 {
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #AAD9BB;
+  text-align: left;
+}
