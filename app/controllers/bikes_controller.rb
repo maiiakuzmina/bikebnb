@@ -21,6 +21,10 @@ class BikesController < ApplicationController
     end
   end
 
+  def edit
+    @bike = Bike.find
+  end
+
   private
 
   def bike_params
