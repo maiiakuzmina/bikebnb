@@ -1,7 +1,10 @@
 class BikesController < ApplicationController
   def index
     @bikes = Bike.all
+<<<<<<< Updated upstream
     @bike = Bike.new
+=======
+>>>>>>> Stashed changes
   end
 
   def show
