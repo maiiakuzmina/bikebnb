@@ -8,6 +8,19 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
   end
 
+  def new
+    @bike = Bike.new
+  end
+
+  def create
+    @bike = Bike.new(bike_params)
+    if @bike.save
+      redirect_to bikes_path
+    else
+      render :new
+    end
+  end
+
   private
 
   def bike_params
