@@ -1,0 +1,16 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="container card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
+    <h1><%= @user.email %> this is your Profile</h1>
+    <h2>Added Bikes</h2>
+    <% @bikes.each do |bike| %>
+      <div class="bike-card">
+        <h3>Name: <%= bike.name %></h3>
+        <p>Price: <%= bike.price %> €</p>
+        <p>Description: <%= bike.description %></p>
+        <% if bike.photo.attached? %>
+          <%= cl_image_tag bike.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

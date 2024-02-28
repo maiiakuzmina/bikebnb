@@ -14,6 +14,7 @@ class BikesController < ApplicationController
 
   def create
     @bike = Bike.new(bike_params)
+    @bike.user = current_user
     if @bike.save
       redirect_to bikes_path
     else
@@ -21,10 +22,16 @@ class BikesController < ApplicationController
     end
   end
 
+  def delete
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to bikes_path
+  end
+
   private
 
   def bike_params
-    params.require(:bike).permit(:name, :price, :description)
+    params.require(:bike).permit(:name, :price, :description, :photo)
   end
 
 end
