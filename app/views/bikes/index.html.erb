@@ -9,7 +9,7 @@
               class: "form-control",
               placeholder: "Search a bike"
           %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <%= submit_tag "Search", name: "", class: "btn btn-new-bike" %>
       <% end %>
     </div>
   </div>
@@ -40,7 +40,7 @@
             <p class="card-text overflow-hidden" style="max-height: 30px; min-height: 30px;"><%= bike.description %></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <%= link_to 'View', bike_path(bike), class: 'btn btn-sm btn-outline-secondary' %>
+                <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
               </div>
             </div>
           </div>
@@ -84,7 +84,7 @@
               <p class="card-text">Description: <%= bike.description %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <%= link_to 'View', bike_path(bike), class: 'btn btn-sm btn-outline-secondary' %>
+                  <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
                 </div>
               </div>
             </div>
