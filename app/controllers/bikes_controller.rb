@@ -2,6 +2,23 @@ class BikesController < ApplicationController
   def index
     @bikes = Bike.all
     @bike = Bike.new
+
+      # this is for search created by Bahar
+      if params[:query].present?
+        sql_subquery = <<~SQL
+          (bikes.name ILIKE :query OR bikes.description ILIKE :query)
+          OR
+          (bikes.name @@ :query2 OR bikes.description @@ :query2)
+        SQL
+        @bikes = @bikes.joins(:user).where(sql_subquery, query: "%#{params[:query]}%", query2: params[:query])
+      else
+        @bikes = Bike.all
+      end
+
+      if @bikes.empty?
+        flash.now[:alert] = "No bikes matching the search criteria were found."
+        @latest_bikes = Bike.order(created_at: :desc).limit(5)
+      end
   end
 
   def show
@@ -26,9 +43,8 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     @bike.destroy
     redirect_to bikes_path
-
   end
-  
+
   def edit
     @bike = Bike.find
   end
@@ -38,5 +54,4 @@ class BikesController < ApplicationController
   def bike_params
     params.require(:bike).permit(:name, :price, :description, :photo)
   end
-
 end

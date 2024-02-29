@@ -1,16 +1,36 @@
-<div class="container d-flex justify-content-center align-items-center">
-  <div class="container card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
-    <h1><%= @user.email %> this is your Profile</h1>
-    <h2>Added Bikes</h2>
-    <% @bikes.each do |bike| %>
-      <div class="bike-card">
-        <h3>Name: <%= bike.name %></h3>
-        <p>Price: <%= bike.price %> €</p>
-        <p>Description: <%= bike.description %></p>
-        <% if bike.photo.attached? %>
-          <%= cl_image_tag bike.photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      </div>
-    <% end %>
+<div class=" container">
+
+  <%# this is title for all bikes which searched via user %>
+  <div>
+    <h3 class="text-center">My Profile</h3>
+    <h4 class="text-center"><%= @user.email %></h4>
+  </div>
+
+  <div class="container">
+    <h3 class="text-center">My Bikes for Rent</h3>
+
+    <div class="row">
+      <% @bikes.each do |bike| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= link_to bike_path(bike) do %>
+              <% if bike.photo.attached? %>
+                <%= cl_image_tag bike.photo.key, class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
+              <% end %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= bike.name %></h5>
+              <p class="card-text"><strong>Price:</strong> <%= bike.price %> € / night</p>
+              <p class="card-text overflow-hidden" style="max-height: 30px; min-height: 30px;"><%= bike.description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to 'View', bike_path(bike), class: 'btn btn-sm btn-outline-secondary' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
