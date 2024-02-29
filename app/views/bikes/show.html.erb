@@ -1,4 +1,4 @@
-<h1><%= @bike.name.capitalize%>Bike</h1>
+<h1><%= @bike.name.capitalize%> in  <%= @bike.address.capitalize %></h1>
 <div class="container d-flex justify-content-center align-items-center">
   <div class="bike-details card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
     <div class="d-flex justify-content-center align-items-center">
@@ -10,11 +10,10 @@
     </div>
 
     <div class="card-body">
-      <p><strong>There are the detail of this Bike </strong></p>
-      <h5 class="card-title">name: <%= @bike.name %></h5>
+
+      <h5 class="card-title"><%= @bike.name.capitalize %> in <%= @bike.address.capitalize %></h5>
       <p>price: <%= @bike.price %> € night</p>
       <p class="card-text">description: <%= @bike.description %></p>
-      <p class="card-text"><small class="text-muted">created: <%= @bike.created_at %></small></p>
       <button class="btn-booking">
         <%= link_to "Book now", booking_path, class: "text-decoration-none text-light"%>
       </button>
