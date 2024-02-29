@@ -35,7 +35,9 @@
             <% end %>
           <% end %>
           <div class="card-body">
-            <h3 class="card-title"><%= bike.address.capitalize%></h3>
+            <% if bike.address.present? %>
+              <h3 class="card-title"><%= bike.address.capitalize%></h3>
+            <% end %>
             <h5 class="card-title"><%= bike.name.capitalize %></h5>
             <p class="card-text"><strong>Price:</strong> <%= bike.price %> € / night</p>
             <p class="card-text overflow-hidden" style="max-height: 30px; min-height: 30px;"><%= bike.description %></p>
