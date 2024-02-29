@@ -29,12 +29,24 @@
 .btn-find-deals {
 
   text-decoration: none;
-  background-color: #000000;
+  background-color:#000000;
   border: 0.5px solid #526a90;
   display: inline-block;
   color: white;
   padding: 8px 16px;
 }
 .btn-find-deals:hover {
+  background-color: #ADB5C8;
+}
+
+.btn-booking {
+  text-decoration: none;
+  background-color:#000000;
+  border: 0.5px solid #526a90;
+  display: inline-block;
+  color: white;
+  padding: 8px 16px;
+}
+.btn-booking:hover {
   background-color: #ADB5C8;
 }
