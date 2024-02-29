@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="row">
     <% @bikes.each do |bike| %>
       <div class="col-md-4">
@@ -6,25 +7,31 @@
           <%= link_to bike_path(bike) do %>
             <% if bike.photo.attached? %>
               <%= cl_image_tag bike.photo.key, class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
-
             <% end %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= bike.name %></h5>
+            <h3 class="card-title"><%= bike.address.capitalize%></h3>
+            <h5 class="card-title"><%= bike.name.capitalize %></h5>
             <p class="card-text">Price: <%= bike.price %> € / night</p>
             <p class="card-text">Description: <%= bike.description %></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <%= link_to 'View', bike_path(bike), class: 'btn btn-sm btn-outline-secondary' %>
-
-
-
               </div>
-           
+
             </div>
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+
+
+  <!-- upload map -------------->
+
+  <div class="mb-4 shadow-sm justify-content-center" style="width: 50%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
