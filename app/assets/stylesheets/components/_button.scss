@@ -10,6 +10,7 @@
 
 .btn-new-bike:hover {
   background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
 
 }
 
@@ -24,12 +25,13 @@
 
 .btn-logout:hover {
   background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
 }
 
 .btn-find-deals {
 
   text-decoration: none;
-  background-color: #000000;
+  background-color:#000000;
   border: 0.5px solid #526a90;
   display: inline-block;
   color: white;
@@ -37,4 +39,59 @@
 }
 .btn-find-deals:hover {
   background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
+}
+
+.btn-booking {
+  text-decoration: none;
+  background-color:#000000;
+  border: 0.5px solid #526a90;
+  display: inline-block;
+  color: white;
+  padding: 8px 16px;
+}
+.btn-booking:hover {
+  background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
+}
+
+.btn-back {
+  text-decoration: none;
+  background-color:#000000;
+  border: 0.5px solid #526a90;
+  display: inline-block;
+  color: white;
+  padding: 8px 16px;
+}
+.btn-back:hover {
+  background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
+}
+
+.btn-outline-primary {
+  text-decoration: none;
+  background-color:#000000;
+  border: 0.5px solid #526a90;
+  display: inline-block;
+  color: white;
+  padding: 8px 16px;
+
+}
+.btn-outline-primary:hover {
+  background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
+}
+
+.btn {
+  text-decoration: none;
+  background-color:#000000;
+  border: 0.5px solid #526a90;
+  display: inline-block;
+  color: white;
+  padding: 8px 16px;
+}
+
+.btn- {
+  background-color: #ADB5C8;
+  border: 0.5px solid #526a90;
 }

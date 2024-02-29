@@ -19,6 +19,14 @@ class BikesController < ApplicationController
         flash.now[:alert] = "No bikes matching the search criteria were found."
         @latest_bikes = Bike.order(created_at: :desc).limit(5)
       end
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {bike: bike})
+
+      }
+    end
   end
 
   def show
