@@ -16,6 +16,8 @@
             <%= link_to bike_path(bike) do %>
               <% if bike.photo.attached? %>
                 <%= cl_image_tag bike.photo.key, class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
+              <% else %>
+                <%= image_tag 'default_bike.jpg', class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
               <% end %>
             <% end %>
             <div class="card-body">
