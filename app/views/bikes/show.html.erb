@@ -5,7 +5,7 @@
   <div class="bike-details card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
     <div class="d-flex justify-content-center align-items-center">
       <% if @bike.photo.attached? %>
-        <%= cl_image_tag @bike.photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag @bike.photo.key, height: 300, crop: :fill %>
       <% else %>
         <p>No image available</p>
       <% end %>
