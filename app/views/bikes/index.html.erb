@@ -35,7 +35,7 @@
               <%= image_tag 'default_bike.jpg', class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
             <% end %>
           <% end %>
-          <div class="card-body">
+          <div class="card-body" style="min-height: 235px;">
             <% if bike.address.present? %>
               <h3 class="card-title"><%= bike.address.capitalize%></h3>
             <% end %>
@@ -92,11 +92,15 @@
 
               <% end %>
             <% end %>
-            <div class="card-body">
-              <h3 class="card-title"><%= bike.address%></h3>
+            <div class="card-body"  style="min-height: 235px;">
+            <% if bike.address.present? %>
+              <h3 class="card-title"><%= bike.address.capitalize%></h3>
+            <% end %>
               <h5 class="card-title"><%= bike.name %></h5>
               <p class="card-text">Price: <%= bike.price %> € / night</p>
-              <p class="card-text">Description: <%= bike.description %></p>
+              <p class="card-text overflow-hidden" style="max-height: 30px; min-height: 30px;"><%= bike.description %></p>
+
+              
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
