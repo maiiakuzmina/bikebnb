@@ -17,7 +17,7 @@ class BikesController < ApplicationController
 
       if @bikes.empty?
         flash.now[:alert] = "No bikes matching the search criteria were found."
-        @latest_bikes = Bike.order(created_at: :desc).limit(5)
+        @latest_bikes = Bike.order(created_at: :desc).limit(6)
       end
     @markers = @bikes.geocoded.map do |bike|
       {
@@ -31,7 +31,7 @@ class BikesController < ApplicationController
 
   def show
     @bike = Bike.find(params[:id])
-    
+
   end
 
   def new
