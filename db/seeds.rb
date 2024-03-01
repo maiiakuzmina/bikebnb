@@ -10,6 +10,7 @@
 require "open-uri"
 User.destroy_all
 Bike.destroy_all
+Booking.destroy_all
 puts "Creating users..."
 
 User.create!(email: "shlomi@gmail.com", password: "123456")
