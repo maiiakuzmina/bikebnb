@@ -26,4 +26,19 @@
       </button>
     </div>
   </div>
+
+  <div>
+    <div class="form">
+      <%= simple_form_for [@bike, @booking] do |f|%>
+        <%= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+
+  </div>
 </div>
