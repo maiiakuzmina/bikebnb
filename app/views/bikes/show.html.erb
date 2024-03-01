@@ -20,7 +20,7 @@
       <% if @bike.address.present? %>
         <h3 class="card-title"><%= @bike.address%></h3>
       <% end %>
-      <p>price: <%= @bike.price %> € night</p>
+      <p>price: <%= @bike.price %> € day</p>
       <p class="card-text">description: <%= @bike.description %></p>
       <button class="btn-booking">
         <%= link_to "Book now",  new_bike_booking_path(@bike), class: "text-decoration-none text-light"%>
