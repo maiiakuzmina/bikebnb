@@ -6,9 +6,9 @@ class BikesController < ApplicationController
       # this is for search created by Bahar
       if params[:query].present?
         sql_subquery = <<~SQL
-          (bikes.name ILIKE :query OR bikes.description ILIKE :query)
+          (bikes.name ILIKE :query OR bikes.description ILIKE :query OR bikes.address ILIKE :query)
           OR
-          (bikes.name @@ :query2 OR bikes.description @@ :query2)
+          (bikes.name @@ :query2 OR bikes.description @@ :query2 OR bikes.address @@ :query2)
         SQL
         @bikes = @bikes.joins(:user).where(sql_subquery, query: "%#{params[:query]}%", query2: params[:query])
       else
@@ -31,6 +31,7 @@ class BikesController < ApplicationController
 
   def show
     @bike = Bike.find(params[:id])
+    
   end
 
   def new

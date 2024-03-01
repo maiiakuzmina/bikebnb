@@ -16,6 +16,9 @@
       <h5 class="card-title">
         <%= @bike.name.capitalize %> in <%= @bike.address.capitalize if @bike.address.present? %>
       </h5>
+      <% if @bike.address.present? %>
+        <h3 class="card-title"><%= @bike.address%></h3>
+      <% end %>
       <p>price: <%= @bike.price %> € night</p>
       <p class="card-text">description: <%= @bike.description %></p>
       <button class="btn-booking">
