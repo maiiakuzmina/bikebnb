@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <h1>This is header</h1>
+        <div class="form-control card shadow p-3 mb-5 bg-white rounded" style="width: 400px; height: 500px">
+        <p>Start date</p>
+        <div>
+         <%= simple_form_for [@bike, @booking], data: { insert_in_list_target: "form" } do |f| %>
+        <% end %>
+</div>
+          <input type="submit" name="Book this bike" value="Save" class="btn btn-primary" data-disable-with="Save">
+    </div>
+  </div>
+  </div>
+</div>
