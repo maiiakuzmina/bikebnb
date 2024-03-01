@@ -1,7 +1,7 @@
 <div class="container">
 
   <%# this is for search button created by Bahar%>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-4">
     <div class="col-sm-8 my-3">
       <%= form_with url: bikes_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -16,12 +16,12 @@
 
   <%# this is all present bikes list %>
   <div class="row position-relative">
+    <br>
+  
     <div class="col-8 row">
-
       <%# this is title for all bikes which searched via user %>
       <div>
         <% if !@bikes.empty? %>
-          <h2 class="text-center">All <strong><%= params[:query] %></strong> bikes here!</h2>
         <% end %>
       </div>
 
