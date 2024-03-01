@@ -1,4 +1,6 @@
-<h1><%= @bike.name.capitalize%> in  <%= @bike.address.capitalize %></h1>
+<h1>
+  <%= @bike.name.capitalize %> in <%= @bike.address.capitalize if @bike.address.present? %>
+</h1>
 <div class="container d-flex justify-content-center align-items-center">
   <div class="bike-details card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
     <div class="d-flex justify-content-center align-items-center">
@@ -11,15 +13,17 @@
 
     <div class="card-body">
 
-      <h5 class="card-title"><%= @bike.name.capitalize %> in <%= @bike.address.capitalize %></h5>
+      <h5 class="card-title">
+        <%= @bike.name.capitalize %> in <%= @bike.address.capitalize if @bike.address.present? %>
+      </h5>
       <p>price: <%= @bike.price %> € night</p>
       <p class="card-text">description: <%= @bike.description %></p>
       <button class="btn-booking">
         <%= link_to "Book now", booking_path, class: "text-decoration-none text-light"%>
       </button>
       <button class="btn-back">
-      <%= link_to "Back to list", bikes_path, class: "text-decoration-none text-light"  %>
-    </button>
-  </div>
+        <%= link_to "Back to list", bikes_path, class: "text-decoration-none text-light"  %>
+      </button>
     </div>
   </div>
+</div>
