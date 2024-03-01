@@ -15,7 +15,8 @@
   </div>
 
   <%# this is all present bikes list %>
-  <div class="row">
+  <div class="row position-relative">
+      <div class="col-8 row">
 
     <%# this is title for all bikes which searched via user %>
     <div>
@@ -45,12 +46,21 @@
               <div class="btn-group">
                 <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
               </div>
+
             </div>
 
           </div>
         </div>
       </div>
     <% end %>
+  </div>
+      <!-- upload map -------------->
+
+    <div class="col-4 mb-4 shadow-sm justify-content-center sticky-top" style="height: 600px; position: sticky !important"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 
   <%# this is list of the latest added (if )%>
@@ -100,11 +110,5 @@
   <% end %>
 
 
-  <!-- upload map -------------->
 
-  <div class="mb-4 shadow-sm justify-content-center" style="width: 50%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 </div>
