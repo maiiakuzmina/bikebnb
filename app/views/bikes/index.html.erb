@@ -1,30 +1,113 @@
 <div class="container">
-  <div class="row">
+
+  <%# this is for search button created by Bahar%>
+  <div class="row justify-content-center">
+    <div class="col-sm-8 my-3">
+      <%= form_with url: bikes_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Search a bike"
+          %>
+        <%= submit_tag "Search", name: "", class: "btn btn-new-bike" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# this is all present bikes list %>
+  <div class="row position-relative">
+      <div class="col-8 row">
+
+    <%# this is title for all bikes which searched via user %>
+    <div>
+      <% if !@bikes.empty? %>
+        <h2 class="text-center">All <strong><%= params[:query] %></strong> bikes here!</h2>
+      <% end %>
+    </div>
+
     <% @bikes.each do |bike| %>
       <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
+        <div class="card mb-4 shadow-sm" style="min-height: 380px;">
           <%= link_to bike_path(bike) do %>
             <% if bike.photo.attached? %>
               <%= cl_image_tag bike.photo.key, class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
-
+            <% else %>
+              <%= image_tag 'default_bike.jpg', class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
             <% end %>
           <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= bike.name %></h5>
-            <p class="card-text">Price: <%= bike.price %> € / night</p>
-            <p class="card-text">Description: <%= bike.description %></p>
+            <% if bike.address.present? %>
+              <h3 class="card-title"><%= bike.address.capitalize%></h3>
+            <% end %>
+            <h5 class="card-title"><%= bike.name.capitalize %></h5>
+            <p class="card-text"><strong>Price:</strong> <%= bike.price %> € / night</p>
+            <p class="card-text overflow-hidden" style="max-height: 30px; min-height: 30px;"><%= bike.description %></p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <%= link_to 'View', bike_path(bike), class: 'btn btn-sm btn-outline-secondary' %>
-
-
-
+                <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
               </div>
 
             </div>
+
           </div>
         </div>
       </div>
     <% end %>
   </div>
+      <!-- upload map -------------->
+
+    <div class="col-4 mb-4 shadow-sm justify-content-center sticky-top" style="height: 600px; position: sticky !important"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+  <%# this is list of the latest added (if )%>
+  <% if @bikes.empty? %>
+    <br>
+
+    <%# this is for alert %>
+    <div class="row justify-content-center">
+      <% if flash[:alert].present? %>
+        <div class="alert alert-warning" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <div class="row">
+      <%# this is title for other bikes list %>
+      <div>
+        <h3 class="text-center">No bikes matching the search criteria were found.</h3>
+        <h3 class="text-center">Latest added bikes</h3> <br>
+      </div>
+
+      <% @latest_bikes.each do |bike| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= link_to bike_path(bike) do %>
+              <% if bike.photo.attached? %>
+                <%= cl_image_tag bike.photo.key, class: 'card-img-top', crop: :fill, height: 200, width: 300 %>
+
+              <% end %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= bike.name %></h5>
+              <p class="card-text">Price: <%= bike.price %> € / night</p>
+              <p class="card-text">Description: <%= bike.description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to 'View', bike_path(bike), class: 'btn btn-new-bike' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
+
 </div>

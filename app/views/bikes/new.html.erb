@@ -6,6 +6,10 @@
         <%= f.text_field :name, class: 'form-control' %>
       </div>
       <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: 'form-control' %>
+      </div>
+      <div class="form-group">
         <%= f.label :price %>
         <%= f.number_field :price, class: 'form-control' %>
       </div>
@@ -17,10 +21,10 @@
         <%= f.label :photo %>
         <%= f.file_field :photo, class: 'form-control' %>
       </div>
-      <%= f.submit 'Save', class: 'btn btn-primary' %>
+      <%= f.submit 'Save', class: 'btn btn-new-bike' %>
     <% end %>
   <% else %>
-    <p>You need to <%= link_to new_user_session_path, class: 'btn btn-outline-primary me-2' do %>  before adding a new bike.</p>
+    <p>You need to <%= link_to new_user_session_path, class: 'btn btn-new-bike' do %>  before adding a new bike.</p>
        Sign In
     <% end %>
   <% end %>
